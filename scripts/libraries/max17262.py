@@ -17,16 +17,16 @@ REG_VCell = 0x09                # Cell Voltage
 REG_Current = 0x0A              # Current
 REG_DieTemp = 0x34              # Die Temperature
 
-LSB_PERCENTAGE = 1.0/256.0      # Percentage %
-LSB_VOLTAGE = 1.25/16.0         # Voltage mV
-LSB_TEMPERATURE = 1.0/256.0     # Temperature C
+LSB_PERCENTAGE = 1.0 / 256.0      # Percentage %
+LSB_VOLTAGE = 1.25 / 16.0         # Voltage mV
+LSB_TEMPERATURE = 1.0 / 256.0     # Temperature C
 LSB_TIME = 5.625                # Time s
 LSB_CAPACITY_R = 0.5            # Capacity mAh
 LSB_CAPACITY_H = 0.1667         # Capacity mAh
 LSB_CURRENT_R = 156.25          # Current uA
 LSB_CURRENT_H = 52.083          # Current uA
-LSB_RESISTANCE_R = 1.0/4096.0   # Resistance Ohm
-LSB_RESISTANCE_H = 1.0/12288.0  # Resistance Ohm
+LSB_RESISTANCE_R = 1.0 / 4096.0   # Resistance Ohm
+LSB_RESISTANCE_H = 1.0 / 12288.0  # Resistance Ohm
 
 
 class MAX17262:
@@ -47,7 +47,7 @@ class MAX17262:
             lowVoltage=True,
             address=DEVICE_ADDRESS,
             is_r_type=True
-            ):
+    ):
         """Initialize the MAX17262 IC.
         i2c: The I2C bus object to use.
         capacity: The capacity of the battery in mAh.
@@ -71,7 +71,7 @@ class MAX17262:
         else:
             cap = int(capacity / LSB_CAPACITY_H)
             cur = int(terminationCurrent / LSB_CURRENT_H)
-        
+
         # set the battery parameters for the ic to use
         self.i2c.writeto_mem(self.address, REG_DesignCap, pack("<H", cap))
         self.i2c.writeto_mem(self.address, REG_IChgTerm, pack("<h", cur))

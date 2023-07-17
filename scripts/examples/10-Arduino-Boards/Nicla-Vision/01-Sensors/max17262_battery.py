@@ -5,8 +5,8 @@ from max17262 import MAX17262
 from time import sleep_ms
 
 # set your battery parameters here
-your_capacity = 340 # mAh
-your_termination_current = 50000 # uA
+your_capacity = 340  # mAh
+your_termination_current = 50000  # uA
 
 # construct the MAX17262 object and initialize the ic with your battery parameters
 battery = MAX17262(I2C(2), your_capacity, your_termination_current)
